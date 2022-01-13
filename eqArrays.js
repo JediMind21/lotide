@@ -7,30 +7,30 @@ const assertEqual = function (actual, expected) {
 };
 
 const eqArrays = function (arr1, arr2) {
-  arr1Str = "";
-  arr2Str = "";
-  for (num of arr1) {
-    num.toString();
-    arr1Str += num;
-  }
-  for (num of arr2) {
-    num.toString();
-    arr2Str += num;
-  }
-  if (arr1Str === arr2Str) {
-    return true;
-  } else {
+  let str1 = "";
+  let str2 = "";
+  if (arr1.length !== arr2.length) {
     return false;
+  } else if (arr1.length === arr2.length) {
+    for (let x = 0; x < arr1.length; x++) {
+      if (typeof arr1[x] === typeof arr2[x]) {
+        str1 += arr1[x];
+        str2 += arr2[x];
+      } else {
+        return false;
+      }
+    }
+    if (str1 === str2) {
+      return true;
+    } else return false;
   }
 };
 
-eqArrays([1, 2, 3], [1, 2, 3]); // => true
-eqArrays([1, 2, 3], [3, 2, 1]); // => false
+console.log(eqArrays([1, 2, 3], [1, 2, 3])); // => true
+console.log(eqArrays([1, 2, 3], [3, 2, 1])); // => false
 
-eqArrays(["1", "2", "3"], ["1", "2", "3"]); // => true
-eqArrays(["1", "2", "3"], ["1", "2", 3]);
+console.log(eqArrays(["1", "2", "3"], ["1", "2", "3"])); // => true
+console.log(eqArrays(["1", "2", "3"], ["1", "2", 3])); // => false
 
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), false);
 assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
-assertEqual(eqArrays([1, 5, 3], [1, 2, 3]), true);
-assertEqual(eqArrays([1, 5, 3], [1, 2, 3]), false);
+assertEqual(eqArrays(["1", 2, 3], [1, 2, 3]), false);

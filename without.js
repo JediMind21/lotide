@@ -37,19 +37,34 @@ const without = function (source, itemsToRemove) {
       itmsToRmvStrs.push(itemsToRemove[x]);
     }
   }
+  let without = [];
+  for (let num of itmsToRmvNums) {
+    for (let x = 0; x < source.length; x++) {
+      if (num === source[x]);
+      without.push(source.splice(x + 1, 1)[0]);
+    }
+  }
+  for (let num of itmsToRmvStrs) {
+    for (let x = 0; x < source.length; x++) {
+      if (num === source[x]);
+      without.push(source.splice(x, 1)[0]);
+    }
+  }
+
+  console.log(without);
 
   // The code above creates new arrays, seperating out strings from numbers. for each input(input1 = source and input2 = itemsToRemove(4 arrays total)). I am going to come back to this problem as I am exhausted from it.
 
   // Below I have solved the problem using the filter method, however, I would like to complete it with a more algorithmic approach using for loops and conditionals, etc. but for now this one liner solves all my problems.
 
-  let without = source.filter(item => !itemsToRemove.includes(item));
+  // let without = source.filter(item => !itemsToRemove.includes(item));
 
-  return without;
+  // return without;
 };
 
-without(["1", "2", 4, 7], ["1", 4]);
-without(["1", "2", "4", 7], ["1", 4]);
-without([1, "2", "4", 7], [1, 4, 7]);
+without(["1", "2", 4, 7], ["1", 4]); // ===> ["2", 7];
+without(["1", "2", "4", 7], ["1", 4]); // ===> ["2", "4", 7];
+without([1, "2", "4", 7], [1, 4, 7]); // ===> ["2", "4"];
 
 const rndmWrds = ["Squid", "Ward", "Sponge", "Bob"];
 console.log(without(rndmWrds, ["Ward", "Sponge"]));

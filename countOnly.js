@@ -7,14 +7,14 @@ const assertEqual = function (actual, expected) {
 };
 
 const countOnly = function (allItems, itemsToCount) {
-  let newArr = [];
+  const newArr = [];
   for (let item in allItems) {
     let val = allItems[item];
-    if (itemsToCount[val] === true) {
-      newArr.push(allItems[item]);
+    if (itemsToCount[val]) {
+      newArr.push(val);
     }
   }
-  let count = {};
+  const count = {};
   newArr.forEach(name => {
     count[name] = (count[name] || 0) + 1;
   });
