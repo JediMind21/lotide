@@ -1,22 +1,27 @@
 const assertArraysEqual = function (arr1, arr2) {
-  arr1Str = "";
-  arr2Str = "";
-  for (num of arr1) {
-    num.toString();
-    arr1Str += num;
+  let str1 = "";
+  let str2 = "";
+  if (arr1.length !== arr2.length) {
+    srt1 = false;
+  } else if (arr1.length === arr2.length) {
+    for (let x = 0; x < arr1.length; x++) {
+      if (typeof arr1[x] === typeof arr2[x]) {
+        str1 += arr1[x];
+        str2 += arr2[x];
+      } else {
+        str1 = false;
+      }
+    }
   }
-  for (num of arr2) {
-    num.toString();
-    arr2Str += num;
-  }
-  if (arr1Str !== arr2Str) {
-    console.log(`🛑🛑🛑 Assertion Failed: ${arr1} !== ${arr2}`);
-  } else if (arr1Str === arr2Str) {
-    console.log(`✅✅✅ Assertion Passed: ${arr1} === ${arr2}`);
-  }
+  if (str1 === str2) {
+    console.log("✅✅✅ Assertion Passed: The arrays are equal!");
+  } else
+    console.log(
+      "🛑🛑🛑 Assertion Failed: The arrays are NøT equal D="
+    );
 };
 
 assertArraysEqual([1, 2, 3], [1, 2, 3]);
+assertArraysEqual([1, "2", 3], [1, 2, 3]);
 assertArraysEqual([1, 2, 3], [1, 2, 3]);
-assertArraysEqual([1, 5, 3], [1, 2, 3]);
 assertArraysEqual([1, 5, 3], [1, 2, 3]);
