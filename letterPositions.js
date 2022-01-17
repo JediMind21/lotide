@@ -13,7 +13,6 @@ const letterPositions = function (input) {
       }
     }
   }
-
   return results;
 };
 

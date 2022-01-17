@@ -1,5 +1,4 @@
-const assertObjectsEqual = function (obj1, obj2) {
-  const inspect = require("util").inspect;
+const eqObjects = function (obj1, obj2) {
   let keys1 = Object.keys(obj1);
   let keys2 = Object.keys(obj2);
   let vals1 = Object.values(obj1);
@@ -24,18 +23,24 @@ const assertObjectsEqual = function (obj1, obj2) {
     }
   };
   if (Object.keys(obj1).length !== Object.keys(obj2).length) {
-    console.log(
-      `🛑🛑🛑 Assertion Failed: Object ${obj1} !== ${obj2}`
-    );
+    return false;
   } else {
     if (eqArrays(keys1, keys2) && eqArrays(vals1, vals2)) {
-      console.log(
-        `✅✅✅ Assertion Passed: Object ${obj1} === ${obj2}`
-      );
-    } else
-      console.log(
-        `🛑🛑🛑 Assertion Failed: Object ${obj1} !== ${obj2}`
-      );
+      return true;
+    } else return false;
+  }
+};
+
+const assertObjectsEqual = function (actual, expected) {
+  const inspect = require("util").inspect;
+  if (actual === expected) {
+    console.log(
+      `✅✅✅ Assertion Passed: Object ${actual} === ${expected}`
+    );
+  } else {
+    console.log(
+      `🛑🛑🛑 Assertion Failed: Object ${actual} !== ${expected}`
+    );
   }
 };
 
@@ -57,5 +62,5 @@ const person3 = {
   height: `6' 3"`,
 };
 
-assertObjectsEqual(person1, person2);
-assertObjectsEqual(person2, person3);
+assertObjectsEqual(eqObjects(person1, person2), true);
+assertObjectsEqual(eqObjects(person2, person3), true);

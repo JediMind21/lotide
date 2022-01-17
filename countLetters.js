@@ -1,19 +1,23 @@
-const assertEqual = function (actual, expected) {
-  if (actual !== expected) {
-    console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
-  } else if (actual === expected) {
-    console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
-  }
-};
-
 let str = "I like to listen to my music really loud";
 
-const countLetters = function (input) {
+const letterPositions = function (input) {
   let obj = {};
-  for (let char of input) {
-    obj[char] = (obj[char] || 0) + 1;
+  for (let x = 0; x < input.length; x++) {
+    let objKeys = Object.keys(obj);
+    let char = input[x];
+    let arr = obj[char];
+    obj[char] = [];
   }
-  console.log(obj);
+  return obj;
 };
 
-countLetters(str);
+console.log(letterPosition(str));
+
+// Deletes key if key is " ";
+
+// let length = Object.keys(obj).length;
+//   for (let x = 0; x < length; x++) {
+//     if (Object.keys(obj)[x] === " ") {
+//       delete obj[" "];
+//     }
+//   }
