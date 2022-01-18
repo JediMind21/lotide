@@ -1,10 +1,11 @@
-const assertEquals = require('../assertEquals');
-const head = require('../head.js');
+const assert = require('chai').assert;
+const head = require('../head');
 
-const actual = head(['Chewy', 'SamBinga', 'Jar Jar Binx', 'Lurrr']);
-
-assertEquals(head(['Chewy', 'SamBinga', 'Jar Jar Binx', 'Lurrr']), 'Chewy');
-assertEquals(head(['Chewy', 'SamBinga', 'Jar Jar Binx', 'Lurrr']), 'Jar Jar Binx');
-
-assertEquals(head([0, 1, 2, 3, 4, 5]), 0);
-assertEquals(head([0, 1, 2, 3, 4, 5]), 4);
+describe('#head', () => {
+	it('returns 1 for [1, 2, 3]', () => {
+		assert.strictEqual(head([1, 2, 3]), 1);
+	});
+	it(`5 for [5]`, () => {
+		assert.strictEqual(head([5]), 5);
+	});
+});

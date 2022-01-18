@@ -1,4 +1,4 @@
-const assertEquals = require('./assertEquals');
+const assertEquals = require('./assertEqual');
 
 const head = function (array) {
 	return array[0];
